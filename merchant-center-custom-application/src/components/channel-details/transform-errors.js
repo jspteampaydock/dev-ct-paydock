@@ -1,4 +1,3 @@
-import { isApolloError } from '@apollo/client';
 import omitEmpty from 'omit-empty-es';
 
 const DUPLICATE_FIELD_ERROR_CODE = 'DuplicateField';

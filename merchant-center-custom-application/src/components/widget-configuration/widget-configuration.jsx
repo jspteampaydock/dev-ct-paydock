@@ -25,209 +25,201 @@ import Grid from '@commercetools-uikit/grid';
 
 
 const WidgetConfigurationForm = () => {
-    const intl = useIntl();
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const intl = useIntl(), [error, setError] = useState(null), [success, setSuccess] = useState(false), [loading, setLoading] = useState(false),
+        group = 'widget', [id, setId] = useState(null), [version, setVersion] = useState(null), [createdAt, setCreatedAt] = useState(null),
+        env = useApplicationContext(
+            (context) => context.environment,
+        ), apiAdapter = new CommerceToolsAPIAdapter(env), version_version_options = [
+            {value: 'Latest', label: 'Latest'},
+            {value: 'Custom', label: 'Custom'},
+        ], widget_style_font_size_options = [
+            {value: '8px', label: '8'},
+            {value: '10px', label: '10'},
+            {value: '12px', label: '12'},
+            {value: '14px', label: '14'},
+            {value: '16px', label: '16'},
+            {value: '18px', label: '18'},
+            {value: '20px', label: '20'},
+            {value: '22px', label: '22'},
+            {value: '24px', label: '24'},
+            {value: '26px', label: '26'},
+            {value: '28px', label: '28'},
+            {value: '30px', label: '30'},
+            {value: '32px', label: '32'},
+        ], widget_style_font_family_options = [
+            {value: 'serif', label: 'serif'},
+            {value: 'sans-serif', label: 'sans-serif'},
+            {value: 'monospace', label: 'monospace'},
+            {value: 'cursive', label: 'cursive'},
+            {value: 'fantasy', label: 'monfantasyspace'},
+            {value: 'system-ui', label: 'system-ui'},
+            {value: 'ui-serif', label: 'ui-serif'},
+            {value: 'ui-sans-serif', label: 'ui-sans-serif'},
+            {value: 'ui-monospace', label: 'ui-monospace'},
+            {value: 'ui-rounded', label: 'ui-rounded'},
+            {value: 'emoji', label: 'emoji'},
+            {value: 'math', label: 'math'},
+            {value: 'fangsong', label: 'fangsong'},
+        ], [initialValues, setInitialValues] = useState({
+            version_version: 'Custom',
+            version_custom_version: '',
+            payment_methods_cards_title: '',
+            payment_methods_cards_description: '',
+            payment_methods_card_min_value: '',
+            payment_methods_card_max_value: '',
+            payment_methods_bank_accounts_title: '',
+            payment_methods_bank_accounts_description: '',
+            payment_methods_wallets_apple_pay_title: '',
+            payment_methods_wallets_apple_pay_description: '',
+            payment_methods_wallets_apple_pay_min_value: '',
+            payment_methods_wallets_apple_pay_max_value: '',
+            payment_methods_wallets_google_pay_title: '',
+            payment_methods_wallets_google_pay_description: '',
+            payment_methods_wallets_google_pay_min_value: '',
+            payment_methods_wallets_google_pay_max_value: '',
+            payment_methods_wallets_afterpay_v2_title: '',
+            payment_methods_wallets_afterpay_v2_description: '',
+            payment_methods_wallets_paypal_title: '',
+            payment_methods_wallets_paypal_description: '',
+            payment_methods_wallets_paypal_min_value: '',
+            payment_methods_wallets_paypal_max_value: '',
+            payment_methods_alternative_payment_method_afterpay_v1_title: '',
+            payment_methods_alternative_payment_method_afterpay_v1_description: '',
+            payment_methods_alternative_payment_method_afterpay_v1_min_value: '',
+            payment_methods_alternative_payment_method_afterpay_v1_max_value: '',
+            payment_methods_alternative_payment_method_zip_title: '',
+            payment_methods_alternative_payment_method_zip_description: '',
+            payment_methods_alternative_payment_method_zippay_min_value: '',
+            payment_methods_alternative_payment_method_zippay_max_value: '',
+            widget_style_bg_color: '#D9D9D9',
+            widget_style_text_color: '#000000',
+            widget_style_border_color: '#000000',
+            widget_style_error_color: '#E71313',
+            widget_style_success_color: '#51B97C',
+            widget_style_font_size: '14px',
+            widget_style_font_family: 'ui-rounded',
+            widget_style_custom_element: '',
+        }), customElementStyles = {
+            'input': {
+                'color': 'rgb(0, 0, 0)',
+                'border': 'dashed red;',
+                'border_radius': '30px',
+                'background_color': 'rgba(255, 255, 255, 0.9)',
+                'height': '20px',
+                'text_decoration': 'underline',
+                'font_size': '20px',
+                'font_family': 'serif',
+                'transition': 'margin-right 2s',
+                'line_height': '20',
+                'font_weight': '400',
+                'padding': '2',
+                'margin': '2',
+            },
+            'label': {
+                'color': 'rgb(0, 0, 0)',
+                'text_decoration': 'underline',
+                'font_size': '20px',
+                'font_family': 'serif',
+                'line_height': '20',
+                'font_weight': '400',
+                'padding': '2',
+                'margin': '2',
+            },
+            'title': {
+                'color': 'rgb(0, 0, 0)',
+                'text_decoration': 'underline',
+                'font_size': '20px',
+                'font_family': 'serif',
+                'line_height': '20',
+                'font_weight': '400',
+                'padding': '2',
+                'margin': '2',
+                'text-align': 'center',
+            },
+            'title_description': {
+                'color': 'rgb(0, 0, 0)',
+                'text_decoration': 'underline',
+                'font_size': '20px',
+                'font_family': 'serif',
+                'line_height': '20',
+                'font_weight': '400',
+                'padding': '2',
+                'margin': '2',
+                'text-align': 'center',
+            },
+        }, validateMinMaxValues = (minValue, maxValue) => {
+            return minValue && maxValue && Number(minValue) > Number(maxValue);
+        }, formik = useFormik({
+            initialValues: initialValues,
+            onSubmit: async (values, formik) => {
+                if (success) setSuccess(false);
+                if (error) setError(false);
+                setLoading(true);
 
-    const group = 'widget';
-    const [id, setId] = useState(null);
-    const [version, setVersion] = useState(null);
-    const [createdAt, setCreatedAt] = useState(null);
-    const env = useApplicationContext(
-      (context) => context.environment,
-    );
-    const apiAdapter = new CommerceToolsAPIAdapter(env);
+                const fieldsToValidate = [
+                    {min: values.payment_methods_card_min_value, max: values.payment_methods_card_max_value},
+                    {
+                        min: values.payment_methods_wallets_apple_pay_min_value,
+                        max: values.payment_methods_wallets_apple_pay_max_value
+                    },
+                    {
+                        min: values.payment_methods_wallets_google_pay_min_value,
+                        max: values.payment_methods_wallets_google_pay_max_value
+                    },
+                    {
+                        min: values.payment_methods_wallets_paypal_min_value,
+                        max: values.payment_methods_wallets_paypal_max_value
+                    },
+                    {
+                        min: values.payment_methods_alternative_payment_method_afterpay_v1_min_value,
+                        max: values.payment_methods_alternative_payment_method_afterpay_v1_max_value
+                    },
+                    {
+                        min: values.payment_methods_alternative_payment_method_zippay_min_value,
+                        max: values.payment_methods_alternative_payment_method_zippay_max_value
+                    },
+                ];
 
-    const version_version_options = [
-        { value: 'Latest', label: 'Latest' },
-        { value: 'Custom', label: 'Custom' },
-    ];
+                const errorMinMax = fieldsToValidate.some(field => validateMinMaxValues(field.min, field.max));
 
-    const widget_style_font_size_options = [
-        { value: '8px', label: '8' },
-        { value: '10px', label: '10' },
-        { value: '12px', label: '12' },
-        { value: '14px', label: '14' },
-        { value: '16px', label: '16' },
-        { value: '18px', label: '18' },
-        { value: '20px', label: '20' },
-        { value: '22px', label: '22' },
-        { value: '24px', label: '24' },
-        { value: '26px', label: '26' },
-        { value: '28px', label: '28' },
-        { value: '30px', label: '30' },
-        { value: '32px', label: '32' },
-    ];
-
-    const widget_style_font_family_options = [
-        { value: 'serif', label: 'serif' },
-        { value: 'sans-serif', label: 'sans-serif' },
-        { value: 'monospace', label: 'monospace' },
-        { value: 'cursive', label: 'cursive' },
-        { value: 'fantasy', label: 'monfantasyspace' },
-        { value: 'system-ui', label: 'system-ui' },
-        { value: 'ui-serif', label: 'ui-serif' },
-        { value: 'ui-sans-serif', label: 'ui-sans-serif' },
-        { value: 'ui-monospace', label: 'ui-monospace' },
-        { value: 'ui-rounded', label: 'ui-rounded' },
-        { value: 'emoji', label: 'emoji' },
-        { value: 'math', label: 'math' },
-        { value: 'fangsong', label: 'fangsong' },
-    ];
-
-    const [initialValues, setInitialValues] = useState({
-        version_version: 'Custom',
-        version_custom_version: '',
-        payment_methods_cards_title: '',
-        payment_methods_cards_description: '',
-        payment_methods_card_min_value: '',
-        payment_methods_card_max_value: '',
-        payment_methods_bank_accounts_title: '',
-        payment_methods_bank_accounts_description: '',
-        payment_methods_wallets_apple_pay_title: '',
-        payment_methods_wallets_apple_pay_description: '',
-        payment_methods_wallets_apple_pay_min_value: '',
-        payment_methods_wallets_apple_pay_max_value: '',
-        payment_methods_wallets_google_pay_title: '',
-        payment_methods_wallets_google_pay_description: '',
-        payment_methods_wallets_google_pay_min_value: '',
-        payment_methods_wallets_google_pay_max_value: '',
-        payment_methods_wallets_afterpay_v2_title: '',
-        payment_methods_wallets_afterpay_v2_description: '',
-        payment_methods_wallets_paypal_title: '',
-        payment_methods_wallets_paypal_description: '',
-        payment_methods_wallets_paypal_min_value: '',
-        payment_methods_wallets_paypal_max_value: '',
-        payment_methods_alternative_payment_method_afterpay_v1_title: '',
-        payment_methods_alternative_payment_method_afterpay_v1_description: '',
-        payment_methods_alternative_payment_method_afterpay_v1_min_value: '',
-        payment_methods_alternative_payment_method_afterpay_v1_max_value: '',
-        payment_methods_alternative_payment_method_zip_title: '',
-        payment_methods_alternative_payment_method_zip_description: '',
-        payment_methods_alternative_payment_method_zippay_min_value: '',
-        payment_methods_alternative_payment_method_zippay_max_value: '',
-        widget_style_bg_color: '#D9D9D9',
-        widget_style_text_color: '#000000',
-        widget_style_border_color: '#000000',
-        widget_style_error_color: '#E71313',
-        widget_style_success_color: '#51B97C',
-        widget_style_font_size: '14px',
-        widget_style_font_family: 'ui-rounded',
-        widget_style_custom_element: '',
-    });
-
-    const customElementStyles = {
-        'input': {
-            'color': 'rgb(0, 0, 0)',
-            'border': 'dashed red;',
-            'border_radius': '30px',
-            'background_color': 'rgba(255, 255, 255, 0.9)',
-            'height': '20px',
-            'text_decoration': 'underline',
-            'font_size': '20px',
-            'font_family': 'serif',
-            'transition': 'margin-right 2s',
-            'line_height': '20',
-            'font_weight': '400',
-            'padding': '2',
-            'margin': '2',
-        },
-        'label': {
-            'color': 'rgb(0, 0, 0)',
-            'text_decoration': 'underline',
-            'font_size': '20px',
-            'font_family': 'serif',
-            'line_height': '20',
-            'font_weight': '400',
-            'padding': '2',
-            'margin': '2',
-        },
-        'title': {
-            'color': 'rgb(0, 0, 0)',
-            'text_decoration': 'underline',
-            'font_size': '20px',
-            'font_family': 'serif',
-            'line_height': '20',
-            'font_weight': '400',
-            'padding': '2',
-            'margin': '2',
-            'text-align': 'center',
-        },
-        'title_description': {
-            'color': 'rgb(0, 0, 0)',
-            'text_decoration': 'underline',
-            'font_size': '20px',
-            'font_family': 'serif',
-            'line_height': '20',
-            'font_weight': '400',
-            'padding': '2',
-            'margin': '2',
-            'text-align': 'center',
-        },
-    };
-
-    const validateMinMaxValues = (minValue, maxValue) => {
-        return minValue && maxValue && Number(minValue) > Number(maxValue);
-    };
-
-    const formik = useFormik({
-        initialValues: initialValues,
-        onSubmit: async (values, formik) => {
-            if (success) setSuccess(false);
-            if (error) setError(false);
-            setLoading(true);
-
-            const fieldsToValidate = [
-                { min: values.payment_methods_card_min_value, max: values.payment_methods_card_max_value },
-                { min: values.payment_methods_wallets_apple_pay_min_value, max: values.payment_methods_wallets_apple_pay_max_value },
-                { min: values.payment_methods_wallets_google_pay_min_value, max: values.payment_methods_wallets_google_pay_max_value },
-                { min: values.payment_methods_wallets_paypal_min_value, max: values.payment_methods_wallets_paypal_max_value },
-                { min: values.payment_methods_alternative_payment_method_afterpay_v1_min_value, max: values.payment_methods_alternative_payment_method_afterpay_v1_max_value },
-                { min: values.payment_methods_alternative_payment_method_zippay_min_value, max: values.payment_methods_alternative_payment_method_zippay_max_value },
-            ];
-
-            const errorMinMax = fieldsToValidate.some(field => validateMinMaxValues(field.min, field.max));
-
-            if (errorMinMax) {
-                setError({ message: 'Min value must be less than max value' });
-                setLoading(false);
-            } else {
-                try {
-                    const response = await apiAdapter.setConfigs(group, {
-                        id: id,
-                        version: version,
-                        createdAt: createdAt,
-                        value: values,
-                    });
-                    setVersion(response.version ?? null);
-                    setId(response.id ?? null);
-                    setCreatedAt(response.createdAt ?? null);
-                    setSuccess(true);
-                } catch (error) {
-                    setError({ message: error.message });
-                    formik.setErrors(error.data);
-                } finally {
+                if (errorMinMax) {
+                    setError({message: 'Min value must be less than max value'});
                     setLoading(false);
+                } else {
+                    try {
+                        const response = await apiAdapter.setConfigs(group, {
+                            id: id,
+                            version: version,
+                            createdAt: createdAt,
+                            value: values,
+                        });
+                        setVersion(response.version ?? null);
+                        setId(response.id ?? null);
+                        setCreatedAt(response.createdAt ?? null);
+                        setSuccess(true);
+                    } catch (error) {
+                        setError({message: error.message});
+                        formik.setErrors(error.data);
+                    } finally {
+                        setLoading(false);
+                    }
                 }
-            }
-        },
-        validate,
-        enableReinitialize: true,
-    });
+            },
+            validate,
+            enableReinitialize: true,
+        }), getConfig = () => {
+            return apiAdapter.getConfigs(group).then((response) => {
+                setVersion(response.version ?? null);
+                setId(response.id ?? null);
+                setCreatedAt(response.createdAt ?? null);
 
-    const getConfig = () => {
-        return apiAdapter.getConfigs(group).then((response) => {
-            setVersion(response.version ?? null);
-            setId(response.id ?? null);
-            setCreatedAt(response.createdAt ?? null);
+                if (response.value) {
+                    let merged = {...formik.values, ...response.value};
+                    formik.setValues(merged);
+                }
+            });
+        };
 
-            if (response.value) {
-                let merged = { ...formik.values, ...response.value };
-                formik.setValues(merged);
-            }
-        });
-    };
 
     useEffect(() => {
         let result = {};
@@ -241,9 +233,11 @@ const WidgetConfigurationForm = () => {
                     version: null,
                     createdAt: null,
                     value: INITIAL_SANDBOX_CONNECTION_FORM,
-                }).then(() => getConfig().catch((error) => {
-                    setError({ message: error.message });
-                }));
+                }).then(() => {
+                    return getConfig().catch((error) => {
+                        setError({message: error.message});
+                    });
+                });
             } else {
                 setError({ message: error.message });
             }

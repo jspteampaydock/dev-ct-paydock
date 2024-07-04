@@ -48,7 +48,6 @@ class ValidationPaydockData {
               && (key.includes('afterpay') || key.includes('zip'))
               && servicesId.fraudServices[form[key]]
             ){
-                let test = servicesId.fraudServices[form[key]];
                 errors.push('Fraud service mode is not supported with ' + key.replace('_fraud_service_id', '')
                   .replace('alternative_payment_methods_', ' ')
                   .replace('_',' '));

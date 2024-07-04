@@ -1,7 +1,5 @@
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Spacings from '@commercetools-uikit/spacings';
-// import Channels from './components/channels';
-// import Welcome from './components/welcome';
 
 import LiveConnection from './components/live-connection';
 import WidgetConfiguration from './components/widget-configuration';

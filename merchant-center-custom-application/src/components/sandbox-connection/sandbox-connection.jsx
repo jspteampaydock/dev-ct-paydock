@@ -108,22 +108,6 @@ const SandboxConnectionForm = () => {
     { value: 'Customer without Gateway ID', label: 'Customer without Gateway ID' },
   ];
 
-  const bank_accounts_use_on_checkout_options = [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
-  ];
-
-  const bank_accounts_bank_account_save_options = [
-    { value: 'Enable', label: 'Enable' },
-    { value: 'Disable', label: 'Disable' },
-  ];
-
-  const bank_accounts_bank_method_save_options = [
-    { value: 'Vault token', label: 'Vault token' },
-    { value: 'Customer with Gateway ID', label: 'Customer with Gateway ID' },
-    { value: 'Customer without Gateway ID', label: 'Customer without Gateway ID' },
-  ];
-
   const wallets_apple_pay_use_on_checkout_options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' },
@@ -174,20 +158,9 @@ const SandboxConnectionForm = () => {
     { value: 'Enable', label: 'Enable' },
   ];
 
-  const wallets_afterpay_v2_use_on_checkout_options = [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
-  ];
 
-  const wallets_afterpay_v2_fraud_options = [
-    { value: 'Disable', label: 'Disable' },
-    { value: 'Enable', label: 'Enable' },
-  ];
 
-  const wallets_afterpay_v2_direct_charge_options = [
-    { value: 'Disable', label: 'Disable' },
-    { value: 'Enable', label: 'Enable' },
-  ];
+
 
   const alternative_payment_methods_afterpay_v1_use_on_checkout_options = [
     { value: 'Yes', label: 'Yes' },
