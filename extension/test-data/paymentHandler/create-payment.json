@@ -1,0 +1,33 @@
+{
+  "amountPlanned": {
+    "centAmount": 12345,
+    "currencyCode": "AUD"
+  },
+  "custom": {
+    "fields": {
+      "CommercetoolsProjectKey": "test-commercetools-project-key",
+      "PaymentExtensionRequest": "{\"action\":\"getPaymentMethodsRequest\",\"request\":{}}"
+    },
+    "type": {
+      "key": "paydock-components-payment-type",
+      "typeId": "type"
+    }
+  },
+  "paymentMethodInfo": {
+    "paymentInterface": "Mock",
+    "method": "paydock-pay",
+    "name": {
+      "en": "Paydock"
+    }
+  },
+  "transactions": [
+    {
+      "type": "Charge",
+      "amount": {
+        "centAmount": 12345,
+        "currencyCode": "AUD"
+      },
+      "state": "Initial"
+    }
+  ]
+}
