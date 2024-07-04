@@ -5,9 +5,10 @@ deployAs:
     scripts:
       postDeploy: npm install && npm run setup-resources
     configuration:
-      securedConfiguration:
+      standardConfiguration:
         - key: PAYDOCK_INTEGRATION_CONFIG
           description: Escaped JSON object
+          required: true
   - name: notification
     applicationType: service
     endpoint: /
@@ -18,11 +19,19 @@ deployAs:
         - key: PAYDOCK_INTEGRATION_CONFIG
           description: Escaped JSON object
   - name: merchant-center-custom-application
-    applicationType: merchant-center
-    endpoint: /
-    scripts:
-      postDeploy: npm install && npm run build
+    applicationType: merchant-center-custom-application
     configuration:
-      securedConfiguration:
-        - key: PAYDOCK_INTEGRATION_CONFIG
-          description: Escaped JSON object
+      standardConfiguration:
+        - key: APP_CLIENT_ID
+          description: Client of Commercetools API
+          required: true
+        - key: APP_CLIENT_SECRET
+          description: Secret of Commercetools API
+          required: true
+        - key: APP_PROJECT_KEY
+          description: Commercetools Project key
+        - key: APP_REGION
+          description: The cloud identifier
+          default: 'europe-west1.gcp'
+        - key: ENTRY_POINT_URI_PATH
+          description: The Application entry point URI path
