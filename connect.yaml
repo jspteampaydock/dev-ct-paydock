@@ -26,11 +26,5 @@ deployAs:
       postDeploy: npm install && npm run build
     configuration:
       securedConfiguration:
-        - key: APP_CLIENT_ID
-          description: Client_id of an Commercetools API Client
-        - key: APP_CLIENT_SECRET
-          description: Secret of an Commercetools API Client
-        - key: APP_PROJECT_KEY
-          description: Commercetools project key
-        - key: APP_REGION
-          description: Commercetools region for example europe-west1.gcp
+        - key: PAYDOCK_INTEGRATION_CONFIG
+          description: Escaped JSON object
