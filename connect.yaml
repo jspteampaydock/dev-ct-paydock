@@ -8,7 +8,6 @@ deployAs:
       securedConfiguration:
         - key: PAYDOCK_INTEGRATION_CONFIG
           description: Escaped JSON object
-
   - name: notification
     applicationType: service
     endpoint: /
@@ -18,7 +17,6 @@ deployAs:
       securedConfiguration:
         - key: PAYDOCK_INTEGRATION_CONFIG
           description: Escaped JSON object
-
   - name: merchant-center-custom-application
     applicationType: merchant-center
     endpoint: /
