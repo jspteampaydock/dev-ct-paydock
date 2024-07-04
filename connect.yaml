@@ -7,7 +7,8 @@ deployAs:
     configuration:
       securedConfiguration:
         - key: PAYDOCK_INTEGRATION_CONFIG
-          description: Escaped JSON object
+          description: "Escaped JSON object"
+
   - name: notification
     applicationType: service
     endpoint: /
@@ -16,7 +17,8 @@ deployAs:
     configuration:
       securedConfiguration:
         - key: PAYDOCK_INTEGRATION_CONFIG
-          description: Escaped JSON object
+          description: "Escaped JSON object"
+
   - name: merchant-center-custom-application
     applicationType: merchant-center
     endpoint: /
@@ -25,12 +27,12 @@ deployAs:
     configuration:
       securedConfiguration:
         - key: APP_CLIENT_ID
-          description: client_id of an API Client for the Composable Commerce Project
+          description: "client_id of an API Client for the Composable Commerce Project"
           required: true
         - key: APP_CLIENT_SECRET
-          description: secret of an API Client for the Composable Commerce Project
+          description: "secret of an API Client for the Composable Commerce Project"
           required: true
         - key: APP_PROJECT_KEY
-          description:  Commercetools Project key
+          description: "Commercetools Project key"
         - key: APP_REGION
-          description:  Commercetools region for example 'europe-west1.gcp'
+          description: "Commercetools region for example 'europe-west1.gcp'"
