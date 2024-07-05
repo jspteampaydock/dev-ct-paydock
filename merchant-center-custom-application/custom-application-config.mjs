@@ -1,22 +1,23 @@
 const config = {
     name: 'devpaydockapp',
-    entryPointUriPath: 'dev-paydock-app',
-    cloudIdentifier: 'gcp-eu',
+    entryPointUriPath: '${env:ENTRY_POINT_URI_PATH}',
+    cloudIdentifier: '${env:CLOUD_IDENTIFIER}',
     env: {
         development: {
-            initialProjectKey: process.env.APP_PROJECT_KEY,
+            initialProjectKey: '${env:APP_PROJECT_KEY}',
         },
         production: {
-            applicationId: 'clu8i7eyq100dd513h7dsdd0duarysfse1',
-            url: '/dev-paydock-app',
+            applicationId: '${env:CUSTOM_APPLICATION_ID}',
+            url: '${env:APPLICATION_URL}',
         },
     },
+
     additionalEnv: {
-        clientId: process.env.APP_CLIENT_ID,
-        clientSecret: process.env.APP_CLIENT_SECRET,
-        projectKey: process.env.APP_PROJECT_KEY,
-        region: process.env.APP_REGION,
-        notificationUrl: process.env.APP_NOTIFICATION_URL,
+        clientId: '${env:APP_CLIENT_ID}',
+        clientSecret: '${env:APP_CLIENT_SECRET}',
+        projectKey: '${env:APP_PROJECT_KEY}',
+        region: '${env:APP_REGION}',
+        notificationUrl: '${env:APP_NOTIFICATION_URL}',
     },
     oAuthScopes: {
         view: ['view_custom_objects', 'view_custom_types', 'view_orders'],

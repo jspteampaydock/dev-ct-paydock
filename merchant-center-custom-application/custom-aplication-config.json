@@ -1,22 +1,22 @@
 {
   "name": "devpaydockapp",
-  "entryPointUriPath": "dev-paydock-app",
-  "cloudIdentifier": "gcp-eu",
+  "entryPointUriPath": "${env:ENTRY_POINT_URI_PATH}",
+  "cloudIdentifier": "${env:CLOUD_IDENTIFIER}",
   "env": {
     "development": {
       "initialProjectKey": "${APP_PROJECT_KEY}"
     },
     "production": {
-      "applicationId": "clu8i7eyq100dd513h7dsdd0duarysfse1",
-      "url": "dev-paydock-app"
+      "applicationId": "${env:CUSTOM_APPLICATION_ID}",
+      "url": "${env:APPLICATION_URL}"
     }
   },
   "additionalEnv": {
-    "clientId": "${APP_CLIENT_ID}",
-    "clientSecret": "${APP_CLIENT_SECRET}",
-    "projectKey": "${APP_PROJECT_KEY}",
-    "region": "${APP_REGION}",
-    "notificationUrl": "${APP_NOTIFICATION_URL}"
+    "clientId": "${env:APP_CLIENT_ID}",
+    "clientSecret": "${env:APP_CLIENT_SECRET}",
+    "projectKey": "${env:APP_PROJECT_KEY}",
+    "region": "${env:APP_REGION}",
+    "notificationUrl": "${env:APP_NOTIFICATION_URL}"
   },
   "oAuthScopes": {
     "view": ["view_custom_objects", "view_custom_types", "view_orders"],
@@ -25,7 +25,7 @@
   "icon": "${path:@commercetools-frontend/assets/application-icons/rocket.svg}",
   "mainMenuLink": {
     "defaultLabel": "Paydock Settings",
-    "uriPath": "dev-paydock-app",
+    "uriPath": "/dev-paydock-app",
     "labelAllLocales": [],
     "permissions": ["ViewCustomObjects"]
   },
