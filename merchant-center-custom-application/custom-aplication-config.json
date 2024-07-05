@@ -7,8 +7,8 @@
       "initialProjectKey": "${APP_PROJECT_KEY}"
     },
     "production": {
-      "applicationId": "clu8i7yq100513h7d0duarye1",
-      "url": "https://jsp-test-six.vercel.app"
+      "applicationId": "clu8i7eyq100dd513h7dsdd0duarysfse1",
+      "url": "dev-paydock-app"
     }
   },
   "additionalEnv": {
