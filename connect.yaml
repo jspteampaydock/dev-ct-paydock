@@ -30,3 +30,18 @@ deployAs:
         - key: ENTRY_POINT_URI_PATH
           description: The Application entry point URI path
           required: true
+        - key: APP_CLIENT_ID
+          description: The commercetools client Id
+          required: true
+        - key: APP_CLIENT_SECRET
+          description:  The commercetools client secret
+          required: true
+        - key: APP_PROJECT_KEY
+          description:  The commercetools project key
+          required: true
+        - key: APP_REGION
+          description:  The commercetools region
+          required: true
+        - key: APP_NOTIFICATION_URL
+          description: The notification url
+          required: true
