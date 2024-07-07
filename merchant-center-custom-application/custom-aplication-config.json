@@ -1,10 +1,10 @@
 {
   "name": "devpaydockapp",
-  "entryPointUriPath": "${env:ENTRY_POINT_URI_PATH}",
+  "entryPointUriPath": "dev-paydock-app",
   "cloudIdentifier": "${env:CLOUD_IDENTIFIER}",
   "env": {
     "development": {
-      "initialProjectKey": "${APP_PROJECT_KEY}"
+      "initialProjectKey": "${env:APP_PROJECT_KEY}"
     },
     "production": {
       "applicationId": "${env:CUSTOM_APPLICATION_ID}",
@@ -25,45 +25,63 @@
   "icon": "${path:@commercetools-frontend/assets/application-icons/rocket.svg}",
   "mainMenuLink": {
     "defaultLabel": "Paydock Settings",
-    "uriPath": "/dev-paydock-app",
-    "labelAllLocales": [],
+    "uriPath": "dev-paydock-app",
+    "labelAllLocales": [
+      {"locale": "EN-GB", "label": "Paydock Settings"},
+      {"locale": "en", "label": "Paydock Settings"},
+      {"locale": "de", "label": "Paydock Settings"}
+    ],
     "permissions": ["ViewCustomObjects"]
   },
   "submenuLinks": [
     {
-      "uriPath": "dev-paydock-app/liveconnection",
+      "uriPath": "liveconnection",
       "defaultLabel": "Live Connection",
-      "labelAllLocales": [],
+      "labelAllLocales": [
+        {"locale": "EN-GB", "label": "Live Connection"},
+        {"locale": "en", "label": "Live Connection"},
+        {"locale": "de", "label": "Live Connection"}
+      ],
       "permissions": ["ViewCustomObjects"]
     },
     {
-      "uriPath": "dev-paydock-app/widgetconfiguration",
+      "uriPath": "widgetconfiguration",
       "defaultLabel": "Widget Configuration",
-      "labelAllLocales": [],
+      "labelAllLocales": [
+        {"locale": "EN-GB", "label": "Widget Configuration"},
+        {"locale": "en", "label": "Widget Configuration"},
+        {"locale": "de", "label": "Widget Configuration"}
+      ],
       "permissions": ["ViewCustomObjects"]
     },
     {
-      "uriPath": "dev-paydock-app/sandboxconnection",
+      "uriPath": "sandboxconnection",
       "defaultLabel": "Sandbox Connection",
-      "labelAllLocales": [],
+      "labelAllLocales": [
+        {"locale": "EN-GB", "label": "Sandbox Connection"},
+        {"locale": "en", "label": "Sandbox Connection"},
+        {"locale": "de", "label": "Sandbox Connection"}
+      ],
       "permissions": ["ViewCustomObjects"]
     },
     {
-      "uriPath": "dev-paydock-app/channels",
-      "defaultLabel": "Channels",
-      "labelAllLocales": [],
-      "permissions": ["ViewCustomObjects"]
-    },
-    {
-      "uriPath": "dev-paydock-app/log",
+      "uriPath": "log",
       "defaultLabel": "Log",
-      "labelAllLocales": [],
+      "labelAllLocales": [
+        {"locale": "EN-GB", "label": "Log"},
+        {"locale": "en", "label": "Log"},
+        {"locale": "de", "label": "Log"}
+      ],
       "permissions": ["ViewCustomObjects"]
     },
     {
-      "uriPath": "dev-paydock-app/orders",
+      "uriPath": "orders",
       "defaultLabel": "Orders",
-      "labelAllLocales": [],
+      "labelAllLocales": [
+        {"locale": "EN-GB", "label": "Orders"},
+        {"locale": "en", "label": "Orders"},
+        {"locale": "de", "label": "Orders"}
+      ],
       "permissions": ["ViewOrders"]
     }
   ],
@@ -76,6 +94,7 @@
         "https://auth.europe-west1.gcp.commercetools.com",
         "https://mc-api.europe-west1.gcp.commercetools.com/graphql",
         "https://jsp-test-six.vercel.app",
+        "${env:APPLICATION_URL}",
         "https://mc-api.europe-west1.gcp.commercetools.com",
         "https://api.paydock-commercetool-app.jetsoftpro.dev",
         "http://localhost:3003",
@@ -92,6 +111,7 @@
         "https://auth.europe-west1.gcp.commercetools.com",
         "https://mc-api.europe-west1.gcp.commercetools.com/graphql",
         "https://mc-api.europe-west1.gcp.commercetools.com",
+        "${env:APPLICATION_URL}",
         "https://api.paydock-commercetool-app.jetsoftpro.dev",
         "https://jsp-test-six.vercel.app",
         "http://localhost:3001",
@@ -120,6 +140,7 @@
         "https://auth.europe-west1.gcp.commercetools.com",
         "https://jsp-test-six.vercel.app",
         "http://localhost:3003",
+        "${env:APPLICATION_URL}",
         "http://localhost:3001",
         "https://api-sandbox.paydock.com",
         "https://api.paydock.com"

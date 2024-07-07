@@ -1,6 +1,6 @@
 const config = {
     name: 'devpaydockapp',
-    entryPointUriPath: '${env:ENTRY_POINT_URI_PATH}',
+    entryPointUriPath: 'dev-paydock-app',
     cloudIdentifier: '${env:CLOUD_IDENTIFIER}',
     env: {
         development: {
@@ -27,44 +27,62 @@ const config = {
     mainMenuLink: {
         defaultLabel: 'Paydock Settings',
         uriPath: 'dev-paydock-app',
-        labelAllLocales: [],
+        labelAllLocales: [
+            { locale: 'EN-GB', label: 'Paydock Settings' },
+            { locale: 'en', label: 'Paydock Settings' },
+            { locale: 'de', label: 'Paydock Settings' }
+        ],
         permissions: ['ViewCustomObjects'],
     },
     submenuLinks: [
         {
-            uriPath: 'dev-paydock-app/liveconnection',
+            uriPath: 'liveconnection',
             defaultLabel: 'Live Connection',
-            labelAllLocales: [],
+            labelAllLocales: [
+                { locale: 'EN-GB', label: 'Live Connection' },
+                { locale: 'en', label: 'Live Connection' },
+                { locale: 'de', label: 'Live Connection' }
+            ],
             permissions: ['ViewCustomObjects'],
         },
         {
-            uriPath: 'dev-paydock-app/widgetconfiguration',
+            uriPath: 'widgetconfiguration',
             defaultLabel: 'Widget Configuration',
-            labelAllLocales: [],
+            labelAllLocales: [
+                { locale: 'EN-GB', label: 'Widget Configuration' },
+                { locale: 'en', label: 'Widget Configuration' },
+                { locale: 'de', label: 'Widget Configuration' }
+            ],
             permissions: ['ViewCustomObjects'],
         },
         {
-            uriPath: 'dev-paydock-app/sandboxconnection',
+            uriPath: 'sandboxconnection',
             defaultLabel: 'Sandbox Connection',
-            labelAllLocales: [],
+            labelAllLocales: [
+                { locale: 'EN-GB', label: 'Sandbox Connection' },
+                { locale: 'en', label: 'Sandbox Connection' },
+                { locale: 'de', label: 'Sandbox Connection' }
+            ],
             permissions: ['ViewCustomObjects'],
         },
         {
-            uriPath: 'dev-paydock-app/channels',
-            defaultLabel: 'Channels',
-            labelAllLocales: [],
-            permissions: ['ViewCustomObjects'],
-        },
-        {
-            uriPath: 'dev-paydock-app/log',
+            uriPath: 'log',
             defaultLabel: 'Log',
-            labelAllLocales: [],
+            labelAllLocales: [
+                { locale: 'EN-GB', label: 'Log' },
+                { locale: 'en', label: 'Log' },
+                { locale: 'de', label: 'Log' }
+            ],
             permissions: ['ViewCustomObjects'],
         },
         {
-            uriPath: 'dev-paydock-app/orders',
+            uriPath: 'orders',
             defaultLabel: 'Orders',
-            labelAllLocales: [],
+            labelAllLocales: [
+                { locale: 'EN-GB', label: 'Orders' },
+                { locale: 'en', label: 'Orders' },
+                { locale: 'de', label: 'Orders' }
+            ],
             permissions: ['ViewOrders'],
         },
     ],
@@ -73,6 +91,7 @@ const config = {
             'connect-src': [
                 '\'self\'',
                 'https://api.europe-west1.gcp.commercetools.com',
+                '${env:APPLICATION_URL}',
                 'https://auth.europe-west1.gcp.commercetools.com/oauth/token',
                 'https://auth.europe-west1.gcp.commercetools.com',
                 'https://mc-api.europe-west1.gcp.commercetools.com/graphql',
@@ -89,6 +108,7 @@ const config = {
                 '\'unsafe-inline\'',
                 '\'unsafe-eval\'',
                 'https://api.europe-west1.gcp.commercetools.com',
+                '${env:APPLICATION_URL}',
                 'https://auth.europe-west1.gcp.commercetools.com/oauth/token',
                 'https://auth.europe-west1.gcp.commercetools.com',
                 'https://mc-api.europe-west1.gcp.commercetools.com/graphql',
@@ -117,6 +137,7 @@ const config = {
             'frame-src': [
                 '\'self\'',
                 'https://api.europe-west1.gcp.commercetools.com',
+                '${env:APPLICATION_URL}',
                 'https://auth.europe-west1.gcp.commercetools.com/oauth/token',
                 'https://auth.europe-west1.gcp.commercetools.com',
                 'https://jsp-test-six.vercel.app',
