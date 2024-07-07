@@ -28,9 +28,8 @@ const config = {
         defaultLabel: 'Paydock Settings',
         uriPath: 'dev-paydock-app',
         labelAllLocales: [
-            { locale: 'EN-GB', label: 'Paydock Settings' },
-            { locale: 'en', label: 'Paydock Settings' },
-            { locale: 'de', label: 'Paydock Settings' }
+            { locale: 'en',  value: 'Paydock Settings'},
+            { locale: 'de',  value: 'Paydock Settings'}
         ],
         permissions: ['ViewCustomObjects'],
     },
@@ -39,9 +38,8 @@ const config = {
             uriPath: 'liveconnection',
             defaultLabel: 'Live Connection',
             labelAllLocales: [
-                { locale: 'EN-GB', label: 'Live Connection' },
-                { locale: 'en', label: 'Live Connection' },
-                { locale: 'de', label: 'Live Connection' }
+                { locale: 'en', value: 'Live Connection' },
+                { locale: 'de', value: 'Live Connection' }
             ],
             permissions: ['ViewCustomObjects'],
         },
@@ -49,9 +47,8 @@ const config = {
             uriPath: 'widgetconfiguration',
             defaultLabel: 'Widget Configuration',
             labelAllLocales: [
-                { locale: 'EN-GB', label: 'Widget Configuration' },
-                { locale: 'en', label: 'Widget Configuration' },
-                { locale: 'de', label: 'Widget Configuration' }
+                { locale: 'en',  value: 'Widget Configuration' },
+                { locale: 'de', value: 'Widget Configuration' }
             ],
             permissions: ['ViewCustomObjects'],
         },
@@ -59,9 +56,8 @@ const config = {
             uriPath: 'sandboxconnection',
             defaultLabel: 'Sandbox Connection',
             labelAllLocales: [
-                { locale: 'EN-GB', label: 'Sandbox Connection' },
-                { locale: 'en', label: 'Sandbox Connection' },
-                { locale: 'de', label: 'Sandbox Connection' }
+                { locale: 'en',  value: 'Sandbox Connection' },
+                { locale: 'de',  value: 'Sandbox Connection' }
             ],
             permissions: ['ViewCustomObjects'],
         },
@@ -69,9 +65,8 @@ const config = {
             uriPath: 'log',
             defaultLabel: 'Log',
             labelAllLocales: [
-                { locale: 'EN-GB', label: 'Log' },
-                { locale: 'en', label: 'Log' },
-                { locale: 'de', label: 'Log' }
+                { locale: 'en',  value: 'Log' },
+                { locale: 'de',  value: 'Log' }
             ],
             permissions: ['ViewCustomObjects'],
         },
@@ -79,9 +74,8 @@ const config = {
             uriPath: 'orders',
             defaultLabel: 'Orders',
             labelAllLocales: [
-                { locale: 'EN-GB', label: 'Orders' },
-                { locale: 'en', label: 'Orders' },
-                { locale: 'de', label: 'Orders' }
+                { locale: 'en',  value: 'Orders' },
+                { locale: 'de',  value: 'Orders' }
             ],
             permissions: ['ViewOrders'],
         },
