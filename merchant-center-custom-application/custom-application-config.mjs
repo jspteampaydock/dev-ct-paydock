@@ -7,8 +7,8 @@ const config = {
             initialProjectKey: '${env:APP_PROJECT_KEY}',
         },
         production: {
-            applicationId: '5fe10a7a-9140-4033-8282-9d5ff972dd43',
-            url: 'https://mc-app-5fe10a7a-9140-4033-8282-9d5ff972dd43.europe-west1.gcp.commercetools.app',
+            applicationId: '${env:CUSTOM_APPLICATION_ID}',
+            url: '${env:APPLICATION_URL}',
         },
     },
 
