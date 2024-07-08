@@ -31,7 +31,7 @@ const config = {
             { locale: 'en',  value: 'Paydock Settings'},
             { locale: 'de',  value: 'Paydock Settings'}
         ],
-        permissions: ['ViewCustomObjects'],
+        permissions: [],
     },
     submenuLinks: [
         {
@@ -41,7 +41,7 @@ const config = {
                 { locale: 'en', value: 'Live Connection' },
                 { locale: 'de', value: 'Live Connection' }
             ],
-            permissions: ['ViewCustomObjects'],
+            permissions: [],
         },
         {
             uriPath: 'widgetconfiguration',
@@ -50,7 +50,7 @@ const config = {
                 { locale: 'en',  value: 'Widget Configuration' },
                 { locale: 'de', value: 'Widget Configuration' }
             ],
-            permissions: ['ViewCustomObjects'],
+            permissions: [],
         },
         {
             uriPath: 'sandboxconnection',
@@ -59,7 +59,7 @@ const config = {
                 { locale: 'en',  value: 'Sandbox Connection' },
                 { locale: 'de',  value: 'Sandbox Connection' }
             ],
-            permissions: ['ViewCustomObjects'],
+            permissions: [],
         },
         {
             uriPath: 'log',
@@ -68,7 +68,7 @@ const config = {
                 { locale: 'en',  value: 'Log' },
                 { locale: 'de',  value: 'Log' }
             ],
-            permissions: ['ViewCustomObjects'],
+            permissions: [],
         },
         {
             uriPath: 'orders',
@@ -77,7 +77,7 @@ const config = {
                 { locale: 'en',  value: 'Orders' },
                 { locale: 'de',  value: 'Orders' }
             ],
-            permissions: ['ViewOrders'],
+            permissions: [],
         },
     ],
     headers: {
