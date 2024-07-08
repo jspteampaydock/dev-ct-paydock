@@ -100,7 +100,7 @@ class CommerceToolsAPIAdapter {
     const isToken = 'access_key' === data.credentials_type;
     const isLive = group === 'live';
     let secretKey = isToken ? data.credentials_access_key : data.credentials_secret_key;
-    const notificationUrl =  this.env.NOTIFICATION_URL;
+    const notificationUrl =  this.env.APP_NOTIFICATION_URL;
     if (secretKey && notificationUrl) {
       const paydockApiAdaptor = new PaydockApiAdaptor(isLive, isToken, secretKey, notificationUrl);
       paydockApiAdaptor.registerNotifications().catch(error => {
