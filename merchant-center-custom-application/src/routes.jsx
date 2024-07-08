@@ -1,12 +1,10 @@
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Spacings from '@commercetools-uikit/spacings';
-
 import LiveConnection from './components/live-connection';
 import WidgetConfiguration from './components/widget-configuration';
 import SandboxConnection from './components/sandbox-connection';
 import Log from './components/log';
 import Order from './components/order';
-import Channels from './components/channels';
 
 const ApplicationRoutes = () => {
   const match = useRouteMatch();
@@ -33,9 +31,6 @@ const ApplicationRoutes = () => {
         </Route>
         <Route path={`${match.path}/sandboxconnection`}>
           <SandboxConnection />
-        </Route>
-        <Route path={`${match.path}/Channels`}>
-          <Channels/>
         </Route>
         <Route path={`${match.path}/log`}>
           <Log />

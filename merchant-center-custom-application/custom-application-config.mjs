@@ -20,8 +20,8 @@ const config = {
         notificationUrl: '${env:APP_NOTIFICATION_URL}',
     },
     oAuthScopes: {
-        view: ['view_custom_objects', 'view_custom_types', 'view_orders'],
-        manage: ['manage_custom_objects', 'manage_custom_types', 'manage_orders'],
+        view: [''],
+        manage: [''],
     },
     icon: '${path:@commercetools-frontend/assets/application-icons/rocket.svg}',
     mainMenuLink: {

@@ -203,12 +203,13 @@ class CommerceToolsAPIAdapter {
       const paymentsArray = [];
       const payments = await this.makeRequest('/payments?where=' + encodeURIComponent('paymentMethodInfo(method="paydock-pay") and custom(fields(AdditionalInformation is not empty))') + '&sort=createdAt+desc&limit=500');
       await this.collectArrayPayments(payments, paymentsArray);
-      let orderQuery = '"' + Object.keys(paymentsArray).join('","') + '"';
-      const orders = await this.makeRequest('/orders?where=' + encodeURIComponent('paymentInfo(payments(id in(' + orderQuery + ')))') + '&sort=createdAt+desc&limit=500');
-      await this.collectArrayOrders(orders, paymentsArray, paydockOrders);
+      if(paymentsArray.length) {
+        let orderQuery = '"' + Object.keys(paymentsArray).join('","') + '"';
+        const orders = await this.makeRequest('/orders?where=' + encodeURIComponent('paymentInfo(payments(id in(' + orderQuery + ')))') + '&sort=createdAt+desc&limit=500');
+        await this.collectArrayOrders(orders, paymentsArray, paydockOrders);
+      }
       return paydockOrders;
     } catch (error) {
-      console.error('Error fetching ordres:', error);
       throw error;
     }
   }

@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
-import { useState, useEffect } from 'react';
 import Text from '@commercetools-uikit/text';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
