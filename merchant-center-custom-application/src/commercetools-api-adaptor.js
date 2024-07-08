@@ -96,16 +96,20 @@ class CommerceToolsAPIAdapter {
     return await this.makeRequest('/custom-objects', 'POST', requestData);
   }
 
-  updateAPINotification(group, data) {
+  async updateAPINotification(group, data) {
     const isToken = 'access_key' === data.credentials_type;
     const isLive = group === 'live';
     let secretKey = isToken ? data.credentials_access_key : data.credentials_secret_key;
-    if (secretKey) {
-      const paydockApiAdaptor = new PaydockApiAdaptor(isLive, isToken, secretKey, this.env);
+    const notificationUrl =  this.env.NOTIFICATION_URL;
+    if (secretKey && notificationUrl) {
+      const paydockApiAdaptor = new PaydockApiAdaptor(isLive, isToken, secretKey, notificationUrl);
       paydockApiAdaptor.registerNotifications().catch(error => {
-        console.log(error.response.data.error)
       });
     }
+  }
+
+  async getNotificationUrl(group) {
+    return await this.makeRequest('/custom-objects/paydockConfigContainer/' + group);
   }
 
   async getConfigs(group) {
