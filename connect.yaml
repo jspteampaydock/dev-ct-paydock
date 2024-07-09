@@ -26,7 +26,6 @@ deployAs:
           required: true
         - key: APPLICATION_URL
           description: The Aplication url
-          required: true
           default: 'http://localhost:3001'
         - key: CLOUD_IDENTIFIER
           description: The cloud identifier
