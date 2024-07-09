@@ -1,6 +1,6 @@
 {
   "name": "devpaydockapp",
-  "entryPointUriPath": "${env:ENTRY_POINT_URI_PATH}",
+  "entryPointUriPath": "dev-paydock-app",
   "cloudIdentifier": "${env:CLOUD_IDENTIFIER}",
   "env": {
     "development": {
@@ -15,8 +15,8 @@
     "clientId": "${env:APP_CLIENT_ID}",
     "clientSecret": "${env:APP_CLIENT_SECRET}",
     "projectKey": "${env:APP_PROJECT_KEY}",
-    "notificationUrl": "${env:APP_NOTIFICATION_URL}",
-    "region": "${env:APP_REGION}"
+    "region": "${env:APP_REGION}",
+    "notificationUrl": "${env:APP_NOTIFICATION_URL}"
   },
   "oAuthScopes": {
     "view": [],

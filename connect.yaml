@@ -26,6 +26,7 @@ deployAs:
           required: true
         - key: APPLICATION_URL
           description: The Aplication url
+          required: true
           default: 'http://localhost:3001'
         - key: CLOUD_IDENTIFIER
           description: The cloud identifier
@@ -44,8 +45,7 @@ deployAs:
           required: true
         - key: APP_REGION
           description:  The commercetools region
-          default: 'europe-west1.gcp'
           required: true
         - key: APP_NOTIFICATION_URL
-          description:  Notification url
-          default: 'http://localhost:8080'
+          description: The notification url
+          required: true

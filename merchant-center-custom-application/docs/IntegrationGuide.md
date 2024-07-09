@@ -16,28 +16,26 @@ Before you begin, ensure you have met the following requirements:
 
 Follow these steps to install the custom application:
 
-### 1 . Clone the repository
 
-Open your terminal and run the following command to clone the repository:
+### 1. Clone the Repository.
 
 ```
 git clone https://github.com/PayDock/e-commerce-commercetools-app
 ```
 
-Navigate to the project directory:
-
+### 2. Navigate to the project-directory.
 ```
-cd e-commerce-commercetools-app
+cd merchant-center-custom-application
 ```
 
-### 2 . Install dependencies
+### 3 . Install dependencies
 
 Run the following command to install the necessary dependencies:
 ```
 npm install
 ```
 
-### 3 . Configuration
+### 4 . Configuration
 
 Create a .env file in the root directory of the project and add the following environment variables with your Commercetools API credentials:
 ```
@@ -45,22 +43,26 @@ APP_CLIENT_ID=""
 APP_CLIENT_SECRET="***"
 APP_PROJECT_KEY="***"
 APP_REGION="europe-west1.gcp"
-APP_NOTIFICATION_URL="https://notification.....com"
+ENTRY_POINT_URI_PATH="paydock-app"
+CLOUD_IDENTIFIER=gcp-eu
+CUSTOM_APPLICATION_ID="***"
+APP_NOTIFICATION_URL ="https://{your-subdomain for notification}"
+APPLICATION_URL ="https://{your-domain-for application}"
 ```
 Replace the placeholder values with your actual Commercetools API credentials.
 
-### 4 . Run the application
+### 5 . Run the application
 Start the application by running the following command:
 ```
 npm start
 ```
 
-The application should now be running on http://your_domain:3000.
+The application should now be running on http://your_domain:3001.
 
 ## Usage
 To use the custom application:
 
-1. Open your browser and navigate to http://your_domain:3000.
+1. Open your browser and navigate to http://your_domain:3001.
 2. Log in with your Commercetools account credentials.
 3. Follow the on-screen instructions to use the application features.
 

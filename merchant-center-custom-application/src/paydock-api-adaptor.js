@@ -3,11 +3,11 @@ import { API_LIVE_URL, API_SANDBOX_URL, NOTIFICATIONS } from './constants';
 const axios = require('axios');
 
 class PaydockApiAdaptor {
-  constructor(isLive, isToken, secretKey, notificationUrl) {
+  constructor(isLive, isToken, secretKey, env) {
     this.apiUrl = isLive ? API_LIVE_URL : API_SANDBOX_URL;
     this.isToken = isToken;
     this.secretKey = secretKey;
-    this.notificationUrl = notificationUrl;
+    this.env = env;
   }
 
 
@@ -16,7 +16,7 @@ class PaydockApiAdaptor {
     NOTIFICATIONS.forEach((event) => {
       if (!registeredEvents.includes(event)) {
         this.callToAPI('v1/notifications', 'POST', {
-          destination: this.notificationUrl,
+          destination: this.env.notificationUrl,
           type: 'webhook',
           event: event,
           transaction_only: false,
@@ -30,7 +30,7 @@ class PaydockApiAdaptor {
     let allNotifications = [];
     if (result) {
       allNotifications = result.data.resource.data;
-      return allNotifications.filter(notification => notification.destination === this.notificationUrl)
+      return allNotifications.filter(notification => notification.destination === this.env.notificationUrl)
         .map(notification => notification.event);
 
     }
