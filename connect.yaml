@@ -24,6 +24,10 @@ deployAs:
         - key: CUSTOM_APPLICATION_ID
           description: The Custom Application ID
           required: true
+        - key: APPLICATION_URL
+          description: The Aplication url
+          required: true
+          default: 'http://localhost:3001'
         - key: CLOUD_IDENTIFIER
           description: The cloud identifier
           default: 'gcp-eu'
@@ -45,8 +49,4 @@ deployAs:
           required: true
         - key: APP_NOTIFICATION_URL
           description:  Notification url
-          required: false
-        - key: APPLICATION_URL
-          description:  Application url
-          required: false
-          default: 'https//:localhost:3001'
+          default: 'http://localhost:8080'
