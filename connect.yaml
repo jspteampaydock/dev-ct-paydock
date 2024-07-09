@@ -46,3 +46,7 @@ deployAs:
         - key: APP_NOTIFICATION_URL
           description:  Notification url
           required: false
+        - key: APPLICATION_URL
+          description:  Application url
+          required: false
+          default: 'https//:localhost:3001'
